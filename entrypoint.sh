@@ -59,9 +59,15 @@ mv ./executor.json ./${INPUT_ALLURE_RESULTS}
 echo "keep allure history from ${INPUT_GH_PAGES}/last-history to ${INPUT_ALLURE_RESULTS}/history"
 cp -r ./${INPUT_GH_PAGES}/last-history/. ./${INPUT_ALLURE_RESULTS}/history
 
+# Save allure-results after each run
+echo "Saving current allure results..."
+mkdir -p ./${INPUT_ALLURE_HISTORY}/allure-results
+cp -r ./${INPUT_ALLURE_RESULTS}/. ./${INPUT_ALLURE_HISTORY}/allure-results
+
+
 echo "generating report from ${INPUT_ALLURE_RESULTS} to ${INPUT_ALLURE_REPORT} ..."
 #ls -l ${INPUT_ALLURE_RESULTS}
-allure generate --clean ${INPUT_ALLURE_RESULTS} -o ${INPUT_ALLURE_REPORT}
+allure generate --clean ./${INPUT_ALLURE_HISTORY}/allure-results -o ${INPUT_ALLURE_REPORT}
 #echo "listing report directory ..."
 #ls -l ${INPUT_ALLURE_REPORT}
 
