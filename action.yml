@@ -1,5 +1,5 @@
-name: 'Allure Report with history'
-description: 'Generate Allure Report with history'
+name: 'Allure Report with history and merged results'
+description: 'Generate Allure Report with history and merged results'
 author: 'simple-elf'
 branding:
   icon: 'layout'
